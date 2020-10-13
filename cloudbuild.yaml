@@ -1,26 +1,10 @@
 steps:
-
-- id: "Executando o build - main.go"
-  name: 'gcr.io/cloud-builders/go'
-  env: ['GO111MODULE=on']
-  args: ['go','build','main.go']
-
-- id: "Rodando o teste unitário - main.go"
-  name: 'gcr.io/cloud-builders/go'
-  args: ['go','test', '-v']
-
-- id: "Executando build da imagem - desafio-ci-test-golang"
-  name: 'gcr.io/cloud-builders/docker'
-  args:
-  - 'build'
-  - '--build-arg'
-  - 'version=1.1.0'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/desafio-ci-test-golang:latest'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/desafio-ci-test-golang:1.1.0'
-  - '.'
-- name: 'gcr.io/$PROJECT_ID/docker-compose'
-  args: ['version']
-images: 
-- 'gcr.io/$PROJECT_ID/desafio-ci-test-golang' 
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=main']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['test', 'main']
+  env: ['PROJECT_ROOT=main']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/main', '.']
+images: ['gcr.io/$PROJECT_ID/main']
