@@ -1,10 +1,16 @@
 steps:
-- name: 'gcr.io/cloud-builders/go'
+
+- id: "Install"
+  name: 'gcr.io/cloud-builders/go'
   args: ['install', '.']
   env: ['PROJECT_ROOT=app']
-- name: 'gcr.io/cloud-builders/go'
+
+- id: "Test unitário"  
+  name: 'gcr.io/cloud-builders/go'
   args: ['test', 'app']
   env: ['PROJECT_ROOT=app']
-- name: 'gcr.io/cloud-builders/docker'
+
+- id: "Image"
+  name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/app', '.']
-images: ['gcr.io/$PROJECT_ID/app']
+  images: ['gcr.io/$PROJECT_ID/app']
