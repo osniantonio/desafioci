@@ -1,9 +1,10 @@
 package main
 
-import (
-	"testing"
-)
+import "testing"
 
-func TestNotVeryMuch(t *testing.T) {
-	t.Log("Not much happens here.")
+func TestSoma(t *testing.T) {
+    total := Soma(5, 5)
+    if total != 10 {
+       t.Errorf("Soma incorreta, valor: %d, esperado: %d.", total, 10)
+    }
 }
