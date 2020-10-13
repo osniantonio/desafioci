@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
-import "testing"
+import (
+	"fmt"
+	"testing"
+	"log"
+)
 
 func TestSoma(t *testing.T) {
 	a := 5
@@ -12,5 +15,6 @@ func TestSoma(t *testing.T) {
     } else {
 		t.Logf("%d + %d = %d", a, b, total)
 		fmt.Printf("%d + %d = %d\n", a, b, total)
+		log.Println("5 + 5 = 10")
 	}
 }
