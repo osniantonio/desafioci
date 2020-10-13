@@ -9,6 +9,6 @@ func TestSoma(t *testing.T) {
     if total != 10 {
        t.Errorf("Soma incorreta, valor: %d, esperado: %d.", total, 10)
     } else {
-		t.Log("%d + %d = %d", a, b, total)
+		t.Logf("%d + %d = %d", a, b, total)
 	}
 }
