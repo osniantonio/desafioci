@@ -1,11 +1,11 @@
 FROM golang:1.12-alpine as builder
-ADD src/app /src/app
-WORKDIR /src/app
+ADD src/app /go/src/app
+WORKDIR /go/src/app
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w"
 
 FROM scratch
-ADD src/app /src/app
-WORKDIR /src/app
-COPY --from=builder /src/app .
+ADD src/app /go/src/app
+WORKDIR /go/src/app
+COPY --from=builder /go/src/app .
 CMD ["./app"]
