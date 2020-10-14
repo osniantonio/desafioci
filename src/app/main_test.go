@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"testing"
-	"log"
-)
+import "testing"
 
 func TestSoma(t *testing.T) {
 	a := 5
@@ -12,9 +8,5 @@ func TestSoma(t *testing.T) {
     total := Soma(a, b)
     if total != 10 {
        t.Errorf("Soma incorreta, valor: %d, esperado: %d.", total, 10)
-    } else {
-		t.Logf("%d + %d = %d", a, b, total)
-		fmt.Printf("%d + %d = %d\n", a, b, total)
-		log.Println("5 + 5 = 10")
-	}
+    }
 }
