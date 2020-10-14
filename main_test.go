@@ -7,7 +7,7 @@ import (
 )
 
 func TestSoma(t *testing.T) {
-	a := 5
+	a := 1
     b := 5
     total := Soma(a, b)
     if total != 10 {
