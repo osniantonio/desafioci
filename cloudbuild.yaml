@@ -7,10 +7,18 @@ steps:
 
 - id: "Rodando testes"  
   name: 'gcr.io/cloud-builders/go'
-  args: ['test', 'app']
-  env: ['PROJECT_ROOT=app'] 
+  args: ['test', '.']
+  env: ["GOPATH=."]
+  dir: "./src"
+  
+- id: "Executando o script"
+  name: "gcr.io/cloud-builders/go"
+  args: ["run", "."]
+  env: ["GOPATH=."]
+  dir: "./src"
   
 - id: "Build e push"  
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/app', '.']
+  
 images: ['gcr.io/$PROJECT_ID/app']
