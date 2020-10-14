@@ -4,7 +4,7 @@ steps:
   name: 'gcr.io/cloud-builders/go'
   args: ['install', '.']
   env: ["GOPATH=."]
-  dir: "./src"
+  dir: "./src/app"
 
 - id: "Rodando testes"  
   name: 'gcr.io/cloud-builders/go'
