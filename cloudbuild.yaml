@@ -3,19 +3,19 @@ steps:
 - id: "Install"
   name: 'gcr.io/cloud-builders/go'
   args: ['install', '.']
-  env: ["GOPATH=."]
+  env: ["GOPATH=./go"]
   dir: "./src/app"
 
 - id: "Rodando testes"  
   name: 'gcr.io/cloud-builders/go'
   args: ['test', '.']
-  env: ["GOPATH=."]
+  env: ["GOPATH=./go"]
   dir: "./src/app"
   
 - id: "Executando o script"
   name: "gcr.io/cloud-builders/go"
   args: ["run", "."]
-  env: ["GOPATH=."]
+  env: ["GOPATH=./go"]
   dir: "./src/app"
   
 - id: "Build e push"  
